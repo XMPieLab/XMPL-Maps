@@ -1,0 +1,21 @@
+{
+  "name": "xmp-map",
+  "version": "0.0.0",
+  "authors": [
+    "orenlevy <orenl@welldone-software.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

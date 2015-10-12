@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+
+    <!-- XMPie XMPL library -->
+    <link href="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/css/xmp.css" rel="stylesheet" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/js/xmp.min.js"></script>
+    <script src="xmpcfg.js"></script>
+
+    <style>
+        body {
+            font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+        }
+
+        .container {
+            border: 1px solid #909090;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.21);
+            padding: 10px;
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        pre {
+            padding: 16px;
+            overflow: auto;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border-radius: 3px;
+
+        }
+    </style>
+	<script>
+		angular.module('xmp.app').controller('lazyCtrl', function($scope){
+			$scope.show = false;
+
+			$scope.toggleMap = function(){
+				$scope.show = !$scope.show;
+				angular.element("#map").scope().reset();
+			}
+		})
+	</script>
+</head>
+
+<body ng-app="xmp.app"
+      ng-controller="XMPAnonymousPage"
+      xmp-cloak
+
+
+        >
+
+
+<div class="container" ng-controller="lazyCtrl">
+
+
+	<button ng-click="toggleMap()">Click me to show map</button>
+	<hr/>
+	<div id="map" xmp-map width="400px" ng-show='show' pin="'350 5th Ave, New York, NY 10118'" center="'350 5th Ave, New York, NY 10118'" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"
+		 zoom="15"></div>
+</div>
+
+
+<script src="xmp-map.min.js"></script>
+
+</body>
+</html>

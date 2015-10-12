@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/booking.css">
+
+    <!--
+    <script src="js/jquery.js"></script>
+        -->
+
+
+
+    <!-- XMPie XMPL library -->
+
+    <link href="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/css/xmp.css" rel="stylesheet" media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/js/xmp.min.js"></script>
+    <!--<script src="js/xmp.js"></script>-->
+    <script src="/xmpcfg.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.0.6/angular-mocks.js"></script>
+    <script src="/js/devXmpApp.js"></script>
+    <script src="/specs/mocks/loginAndEvents.js"></script>
+    <script src="/specs/mocks/getRecipientADORs.js"></script>
+    <script src="/specs/mocks/passThrough.js"></script>
+
+    <script src="/js/jquery-migrate-1.2.1.js"></script>
+
+    <!--[if lt IE 9]>
+    <html class="lt-ie9">
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src='/js/device.min.js'></script>
+
+
+
+</head>
+
+<body ng-app="test.xmp.app"
+      ng-controller="XMPPersonalizedPage"
+      xmp-cloak
+      xmp-tracking-page-name="Landing" ng-init="isDisplayed=false;">
+<div>{{xmp.r['Fname']}}</div>
+<div> {{xmp.r['Lname']}}</div>
+<div> {{xmp.r['Gender']}}</div>
+<script src="/js/script.js"></script>
+<!-- coded by nyan -->
+</body>
+</html>

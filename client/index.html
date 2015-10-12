@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+
+    <!-- XMPie XMPL library -->
+    <link href="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/css/xmp.css" rel="stylesheet" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/js/xmp.min.js"></script>
+    <script src="xmpcfg.js"></script>
+	<script>
+		angular.module('xmp.app').controller('mapsController', function($scope){
+			$scope.moptions={
+				width:'600px'
+			};
+			$scope.override_pin_icon={
+				pin: {
+					icon: {
+						url : 'http://localhost:3000/images/Flag-red-icon.png',
+						size: { width: 30, height: 30},
+						origin: {x:0, y:0},
+						anchor: {x:0, y:0}
+					}
+				}
+			};
+			$scope.override_routes= {
+				route: {
+					color: '#FF00FF',
+				},
+				routeIcons: {
+					start: {
+						url: 'http://localhost:3000/images/Flag-red-icon.png',
+						size: {width: 30, height: 30},
+						origin: {x: 0, y: 0},
+						anchor: {x: 0, y: 30}
+					},
+					end: {
+						url: 'http://localhost:3000/images/Flag-green-icon.png',
+						size: {width: 30, height: 30},
+						origin: {x: 0, y: 0},
+						anchor: {x: 0, y: 30}
+					}
+				}
+			};
+
+			$scope.styles = [
+				{
+					stylers: [
+						{ hue: '#00ffe6' },
+						{ saturation: -20 }
+					]
+				},
+				{
+					featureType: 'road',
+					elementType: 'geometry',
+					stylers: [
+						{ lightness: 100 },
+						{ visibility: 'simplified' }
+					]
+				},
+				{
+					featureType: 'road',
+					elementType: 'labels',
+					stylers: [
+						{ visibility: 'off' }
+					]
+				}
+
+			];
+		})
+	</script>
+    <style>
+        body {
+            font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+        }
+
+        .container {
+            border: 1px solid #909090;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.21);
+            padding: 10px;
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        pre {
+            padding: 16px;
+            overflow: auto;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border-radius: 3px;
+
+        }
+    </style>
+
+</head>
+
+<body ng-app="xmp.app"
+      ng-controller="XMPPersonalizedPage"
+      xmp-cloak
+      xmp-tracking-page-name="Landing"
+        >
+<div ng-controller="mapsController">
+<div class="container">
+    <h2>Display route</h2>
+<pre>
+	&lt;div xmp-map
+	width=&quot;500px&quot;
+	pin=&quot;xmp.r.Address&quot;
+	route-origin=&quot;xmp.r.FromAddress&quot;
+	route-destination=&quot;xmp.r.ToAddress&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;
+	&gt;&lt;/div&gt;
+</pre>
+
+    <div xmp-map width="500px" pin="xmp.r.Address" route-origin="xmp.r.FromAddress" route-destination="xmp.r.ToAddress"
+         geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8" zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Center map</h2>
+<pre>
+	&lt;div xmp-map
+	width=&quot;500&quot;
+	center=&quot;xmp.r.Address&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;
+	&gt;&lt;/div&gt;
+</pre>
+
+    <div xmp-map width="400px" center="xmp.r.Address" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"
+         zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Change map styling</h2>
+<pre>
+	&lt;div xmp-map
+	width=&quot;500&quot;
+	center=&quot;xmp.r.Address&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;
+	map-styles=&quot;styles&quot;
+	&gt;&lt;/div&gt;
+
+	styles = [
+		{
+			stylers: [
+				{ hue: '#00ffe6' },
+				{ saturation: -20 }
+			]
+		},
+		{
+			featureType: 'road',
+			elementType: 'geometry',
+			stylers: [
+				{ lightness: 100 },
+				{ visibility: 'simplified' }
+			]
+		},
+		{
+			featureType: 'road',
+			elementType: 'labels',
+			stylers: [
+				{ visibility: 'off' }
+			]
+		}
+
+</pre>
+	<div xmp-map width="431px" center="xmp.r.Address" map-styles="styles" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"
+		 zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Static addresses</h2>
+<pre>
+	&lt;div xmp-map
+	width=&quot;400px&quot;
+	center=&quot;'350 5th Ave, New York, NY 10118,'&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;
+	&gt;&lt;/div&gt;
+</pre>
+    <div xmp-map width="400px" center="'350 5th Ave, New York, NY 10118'"
+         geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8" zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Add pin</h2>
+<pre>
+	&lt;div xmp-map
+	width=&quot;400px&quot;
+	center=&quot;xmp.r.Address&quot;
+	pin=&quot;xmp.r.Address&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;
+	&gt;&lt;/div&gt;
+</pre>
+    <div xmp-map width="400px" center="xmp.r.Address" pin="xmp.r.Address"
+         geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8" zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Override with options:</h2>
+<pre>
+	moptions= {
+		width:'600px'
+	};
+</pre>
+<pre>
+	&lt;div xmp-map
+	options=&quot;moptions&quot;
+	center=&quot;xmp.r.Address&quot;
+	pin=&quot;xmp.r.Address&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	&gt;&lt;/div&gt;
+</pre>
+    <div xmp-map options="moptions" center="xmp.r.Address" pin="xmp.r.Address"
+         geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"></div>
+</div>
+<div class="container">
+	<h2>Override pin icon</h2>
+	<pre>
+override_pin_icon={
+	pin: {
+		icon: {
+			url : 'http://localhost:3000/images/Flag-red-icon.png',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:0}
+		}
+	}
+};
+	</pre>
+	<pre>
+	&lt;div xmp-map
+	width=&quot;400px&quot;
+	center=&quot;xmp.r.Address&quot;
+	pin=&quot;xmp.r.Address&quot;
+	options=&quot;override_pin_icon&quot;
+	geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+	zoom=&quot;15&quot;&gt;
+	&lt;/div&gt;
+	</pre>
+	<div xmp-map width="400px" center="xmp.r.Address" pin="xmp.r.Address" options="override_pin_icon"
+		 geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8" zoom="15"></div>
+</div>
+<div class="container">
+	<h2>Override route settings</h2>
+	<pre>
+override_routes={
+	route:{
+		color: '#FF00FF',
+	},
+	routeIcons: {
+		start: {
+			url : 'http://localhost:3000/images/Flag-red-icon.png',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:30}
+		},
+		end: {
+			url : 'http://localhost:3000/images/Flag-green-icon.png',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:30}
+		}
+	}
+};
+	</pre>
+	<pre>
+		&lt;div xmp-map
+		width=&quot;500px&quot;
+		route-origin=&quot;xmp.r.FromAddress&quot;
+		route-destination=&quot;xmp.r.ToAddress&quot;
+		geocoding-api-key=&quot;AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8&quot;
+		zoom=&quot;15&quot;
+		options=&quot;override_routes&quot;
+		&gt;&lt;/div&gt;
+	</pre>
+	<div xmp-map width="500px" route-origin="xmp.r.FromAddress" route-destination="xmp.r.ToAddress"
+		 geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8" zoom="15" options="override_routes"></div>
+</div>
+<div class="container">
+    Full options object:
+<pre>
+{
+	center: {
+		address:'set address here'
+	},
+	zoom:8,
+	width:'500px',
+	height:'400px',
+	route:{
+		color: '#FF00FF', //color or route line
+		origin:{ address : 'put origin address here'},
+		destination: { address: 'put destination address here'}
+	},
+	routeIcons: {
+		start: {
+			url : 'url to icon image',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:0}
+		},
+		end: {
+			url : 'url to icon image',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:0}
+		}
+	},
+	pin: {
+		address: 'put address here',
+		icon: {
+			url : 'url to icon image',
+			size: { width: 30, height: 30},
+			origin: {x:0, y:0},
+			anchor: {x:0, y:0}
+		}
+	},
+	geocoding_api_key: 'google api key'
+}
+</pre>
+    Mandatory options:
+    <ul>
+        <li>
+            center - If map will not display a route the this options is mandatory. When the map displays a route, the
+            center will be overridden by the route.
+        </li>
+        <li>
+            geocoding_api_key - the api key to be used to fetch the address coordinates.
+        </li>
+    </ul>
+    Default values:
+    <ul>
+        <li>height - 300px</li>
+        <li>center - latitude : 0, longitude : 0</li>
+    </ul>
+</div>
+</div>
+<script src="xmp-map.min.js"></script>
+
+</body>
+</html>

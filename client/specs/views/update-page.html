@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/booking.css">
+
+    <!--
+    <script src="js/jquery.js"></script>
+        -->
+
+
+
+    <!-- XMPie XMPL library -->
+
+    <link href="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/css/xmp.css" rel="stylesheet" media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/js/xmp.min.js"></script>
+    <!--<script src="js/xmp.js"></script>-->
+    <script src="/xmpcfg.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.0.6/angular-mocks.js"></script>
+    <script src="/js/devXmpApp.js"></script>
+    <script src="/specs/mocks/loginAndEvents.js"></script>
+    <script src="/specs/mocks/getRecipientADORs.js"></script>
+    <script src="/specs/mocks/passThrough.js"></script>
+
+    <script src="/js/jquery-migrate-1.2.1.js"></script>
+
+    <!--[if lt IE 9]>
+    <html class="lt-ie9">
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src='/js/device.min.js'></script>
+
+
+
+</head>
+
+<body ng-app="test.xmp.app"
+      ng-controller="XMPPersonalizedPage"
+      xmp-cloak
+      xmp-tracking-page-name="Landing" ng-init="isDisplayed=false;">
+<div class="section">
+    <div class="section-title">{{xmp.r['Fname']}}'s update form</div>
+    <div class="section-content">
+        <img xmp-image-asset="xmp.r['MainImage']"/>
+    </div>
+</div>
+<div class="section">
+    <div class="section-title">Update form</div>
+    <div class="section-content">
+        <div>
+            Please fill some details 'ere:
+        </div>
+        <div>
+            <form xmp-update xmp-success-track-action="update">
+                <ul>
+                    <li>
+                        First Name : <input type="text" xmp-write-ador="xmp.r['Fname']"  size="30" xmp-tracking-action="first name edited">
+                    </li>
+                    <li>
+                        Last Name : <input type="text" xmp-write-ador="xmp.r['Lname']"  size="30" xmp-tracking-action="last name edited">
+                    </li>
+                </ul>
+                <input class="btn-primary" type="submit" value="save with redirect" xmp-success-url="index.html?updateaction=firstnameLastNameChanged">
+                <input class="btn-primary" type="submit" value="save with redirect and alert" xmp-success-url="index.html?updateaction=secondary" xmp-success-js="alert('edit success')">
+                <input class="btn-primary" type="submit" value="save no redirect">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-title">Another Update form</div>
+    <div class="section-content">
+        <div>
+            Now, just your email
+        </div>
+        <div>
+            <form xmp-update xmp-success-url="index.html?updateaction=emailChanged" xmp-success-track-action="update">
+                <ul>
+                    <li>
+                        email : <input type="text" xmp-write-ador="xmp.r['Email']"  size="30" xmp-tracking-action="email edited">
+                    </li>
+                </ul>
+                <input class="btn-primary" type="submit" value="save email">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+<!-- coded by nyan -->
+</body>
+</html>
