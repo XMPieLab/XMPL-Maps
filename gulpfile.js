@@ -187,7 +187,7 @@ gulp.task('build.lib', function(){
    gulp.src(config.sources.xmpmap)
        .pipe($.concat('xmp-map.min.js'))
        .pipe($.uglify())
-       .pipe(gulp.dest(config.distribution));
+       .pipe(gulp.dest(config.build));
 });
 
 gulp.task('pack', ['build.lib'], function(){

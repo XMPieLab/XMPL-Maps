@@ -1,5 +1,5 @@
 var root = __dirname,
-    build = "dist/build/",
+    build = "build/",
     client = "client/",
     dist = "dist/";
 
