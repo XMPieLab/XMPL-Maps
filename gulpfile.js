@@ -4,7 +4,6 @@ var util = require("util"),
     gulp = require("gulp"),
     config = require("./gulp.config"),
     $ = require("gulp-load-plugins")({lazy:true}),
-    wiredep = require("wiredep")(),
     argv = require("yargs").boolean('prod').argv,
     browserSync = require('browser-sync').create();
 
@@ -78,71 +77,6 @@ gulp.task("bundle.css", [], function () {
         .pipe(gulp.dest(config.distribution));
 });
 
-gulp.task("vendor.js", [], function(){
-    if (typeof wiredep.js == 'undefined') {
-        gulp
-            .src(config.vendors.js)
-            .pipe(gulp.dest(config.distribution));
-        return;
-    }
-    gulp
-        .src(config.vendors.js)
-        .pipe($.if(argv.prod,
-            $.inject(
-                gulp.src(wiredep.js, {base: config.clientRoot})
-                    .pipe($.uglify()),
-                {
-                    starttag: "/* inject:js */",
-                    endtag: " /* endinject */",
-                    transform: function(filePath, file) {
-                        return file.contents.toString('utf8');
-                    }
-                })
-            ,
-            $.inject(
-                gulp.src(wiredep.js, {base: config.clientRoot})
-                    .pipe(gulp.dest(config.distribution)), {
-                    starttag: "/* inject:js */",
-                    endtag: " /* endinject */",
-                    transform: function (filePath) {
-                        return util.format("document.write(\"<script type='text/javascript' src='%s'></script>\");", removeDistribution(filePath));
-                    }
-                }
-            )))
-        .pipe(gulp.dest(config.distribution));
-});
-
-gulp.task("vendor.css", [], function(){
-    if (wiredep.css) {
-        gulp
-            .src(config.vendors.css, {base: config.clientRoot})
-            .pipe($.if(argv.prod,
-                $.inject(gulp.src(wiredep.css, {base: config.clientRoot})
-                        .pipe($.minifyCss()),
-                    {
-                        starttag: "/* inject:css */",
-                        endtag: " /* endinject */",
-                        transform: function (filePath, file) {
-                            return file.contents.toString('utf8');
-                        }
-                    })
-                ,
-                $.inject(
-                    gulp.src(wiredep.css, {base: config.clientRoot})
-                        .pipe(gulp.dest(config.distribution)), {
-                        starttag: "/* inject:css */",
-                        endtag: " /* endinject */",
-                        transform: function (filePath) {
-                            return util.format("@import url(%s);", removeDistribution(filePath));
-                        }
-                    }
-                )
-            ))
-            .pipe(gulp.dest(config.distribution));
-    }
-});
-
-
 gulp.task("statics", function(){
     gulp.src(config.sources.statics, { base: config.clientRoot})
         .pipe(gulp.dest(config.distribution));
@@ -154,7 +88,7 @@ gulp.task("html", function(){
 });
 
 gulp.task("build", function(){
-    runSequence("clean", /*"vendor.js", "vendor.css", */"bundle.js", "bundle.css", "statics", "html");
+    runSequence("clean", "bundle.js", "bundle.css", "statics", "html");
 });
 
 gulp.task("bundle.js.update", function(){

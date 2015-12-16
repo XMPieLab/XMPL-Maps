@@ -258,6 +258,12 @@
                         init();
                     });
 
+                    [attr.center, attr.pin, attr.routeOrigin, attr.routeDestination].forEach(function(a){
+                        scope.$watch(a, function(){
+                            init();
+                        })
+                    });
+
                 }
             };
         }])

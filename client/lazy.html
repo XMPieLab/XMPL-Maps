@@ -10,7 +10,7 @@
     <!-- XMPie XMPL library -->
     <link href="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/css/xmp.css" rel="stylesheet" media="screen"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.0/xmp/js/xmp.min.js"></script>
+    <script src="https://ajax.xmcircle.com/ajax/libs/xmpl/1.0.8/xmp/js/xmp.min.js"></script>
     <script src="xmpcfg.js"></script>
 
     <style>
@@ -49,6 +49,7 @@
 </head>
 
 <body ng-app="xmp.app"
+      xmp-remember-recipient
       ng-controller="XMPAnonymousPage"
       xmp-cloak
 
@@ -61,12 +62,30 @@
 
 	<button ng-click="toggleMap()">Click me to show map</button>
 	<hr/>
-	<div id="map" xmp-map width="400px" ng-show='show' pin="'350 5th Ave, New York, NY 10118'" center="'350 5th Ave, New York, NY 10118'" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"
-		 zoom="15"></div>
+	<!--<div id="map" xmp-map width="400px" ng-show='show' pin="'350 5th Ave, New York, NY 10118'" center="'350 5th Ave, New York, NY 10118'" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"-->
+		 <!--zoom="15"></div>-->
+
 </div>
+<div class="container">
+    <h4>Addored Map</h4>
+    <h5>Address: {{xmp.r.Address}}</h5>
+    <form xmp-register>
+        <div>
+            <label>First Name</label><input type="text"  xmp-write-ador="xmp.r['First Name']">
+        </div>
+        <div>
+            <label>Last Name</label><input type="text"  xmp-write-ador="xmp.r['Last Name']">
+        </div>
+        <div>
+            <label>Address</label><input type="text"  xmp-write-ador="xmp.r['Address']">
+        </div>
+        <input type="submit" value="Register">
+    </form>
 
-
-<script src="xmp-map.min.js"></script>
+</div>
+<div id="map2" xmp-map width="400px"  center="xmp.r.Address" geocoding-api-key="AIzaSyBr1MS5MPO01biIwQn3kkZ-zC0ZQmfPce8"
+     zoom="15" style="width:400px;height:400px"></div>
+<script type="text/javascript" src="xmp-map.min.js"></script>
 
 </body>
 </html>
