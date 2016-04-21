@@ -1,16 +1,19 @@
 XMP-MAP directive
 =================
-The xmp-map directive allows to display a Google map on the page. 
+The **xmp-map** directive allows to display a Google map on the page. 
 The directive can display a pin or a route according to options you provide to it.
 
 Prerequisites
 -------------
-You will need a Google API key to use this directive. The API is used to convert the address to coordinates the map can display.
+You will need a Google API key to use this directive.
+The API is used to convert the address to coordinates the map can display.
 
 Default usage:
-    `<div xmp-map center='xmp.r.Address' geocoding-api-key='api-key-provided-by-google'/>`
+```javascript
+<div xmp-map center='xmp.r.Address' geocoding-api-key='api-key-provided-by-google'/>
+```
 
-Full usage showing attributes in code form that you can cut & paste into your HTML:
+Full usage showing some attributes in code form that you can cut & paste into your HTML:
 ```javascript
 <div xmp-map 
 		geocoding_api_key="api-key-provided-by-google"
@@ -28,7 +31,7 @@ Attributes:
 | **Attribute** | **Description** |
 | ------------- | ------------- |
 | **geocoding-api-key** | A Google Geocoding API key.  To generate a key follow instructions [here](https://developers.google.com/maps/documentation/javascript/tutorial). |
-| **center** | An address to act as the center of the map. This is a single ADOR or a concatenation of multiple ADORs. |
+| **center** | An address to act as the center of the map. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
 | **pin** | An address to place a pin on the map. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
 | **route-origin** | An address for the start of the route. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
 | **route-destination** | An address for the end of the route. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
