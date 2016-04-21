@@ -36,7 +36,7 @@ Attributes:
 | **width** | Width of the map. This field accepts CSS values such is '600px', '50%'. If not specified the default value is 100%. |
 | **height** | Height of the map. This field accepts CSS values as the width. If not specified the default value is 300px. |
 | **map-styles** | Styles to customize the map's theme. You can find detailed information from Google Maps [here](https://developers.google.com/maps/documentation/javascript/styling?hl=en). |
-| **options** | These are the options values which allow you to override all option and control map styling:
+| **options** | These are the options values which allow you to override all option and control map styling. Code example is below. |
 
 ```javascript
 {
@@ -92,7 +92,7 @@ Attributes:
     ]
 	geocoding_api_key: 'google-api-key here.'
 }
-```  |
+```
 
  
 Obtaining an API Key
