@@ -5,7 +5,8 @@ var util = require("util"),
     config = require("./gulp.config"),
     $ = require("gulp-load-plugins")({lazy:true}),
     argv = require("yargs").boolean('prod').argv,
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync').create(),
+    wrap = require("gulp-wrap");
 
 
 function removeDistribution(path) {
@@ -121,6 +122,7 @@ gulp.task('build.lib', function(){
    gulp.src(config.sources.xmpmap)
        .pipe($.concat('xmp-map.min.js'))
        .pipe($.uglify())
+       .pipe(wrap('var mapOnReady = function() {<%= contents %>}', {}, { parse: false  }))
        .pipe(gulp.dest(config.build));
 });
 

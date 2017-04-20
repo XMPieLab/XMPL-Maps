@@ -29,6 +29,7 @@
     "gulp-tar": "^1.4.0",
     "gulp-uglify": "^1.2.0",
     "gulp-using": "0.0.1",
+    "gulp-wrap": "^0.13.0",
     "run-sequence": "^1.1.2",
     "wiredep": "^3.0.0-beta",
     "yargs": "^3.16.1"
