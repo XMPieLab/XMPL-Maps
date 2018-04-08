@@ -15,7 +15,7 @@
      * Loads the google maps JavaScript when DOM is ready
      */
     $(function(){
-        $.getScript("http://maps.google.com/maps/api/js?callback=__google_api_loaded_for_xmp_map__")
+        $.getScript("https://maps.google.com/maps/api/js?callback=__google_api_loaded_for_xmp_map__")
             .fail(function (jqxhr) {
                 console.log("XMP MAP - Could not load Google Map script: " + jqxhr);
             });
