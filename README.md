@@ -1,29 +1,47 @@
 XMP-MAP directive
 =================
-The xmp-map directive allows to display a Google map on the page. 
+The **xmp-map** directive allows to display a Google map on the page. 
 The directive can display a pin or a route according to options you provide to it.
 
 Prerequisites
 -------------
-You will need a Google API key to use this directive. The API is used to convert the address to coordinates the map can display.
+You will need a Google API key to use this directive.
+The API is used to convert the address to coordinates the map can display.
 
 Default usage:
-    `<div xmp-map center='xmp.r.Address' geocoding-api-key='api-key-provided-by-google'/>`
+```javascript
+<div xmp-map center='xmp.r.Address' geocoding-api-key='api-key-provided-by-google'/>
+```
+
+Full usage showing some attributes in code form that you can cut & paste into your HTML:
+```javascript
+<div xmp-map 
+		geocoding_api_key="api-key-provided-by-google"
+        center="xmp.r.CenteredAddressString"
+        route-origin="xmp.r.OriginAddressString"
+        route-destination="xmp.r.DestinationAddressString"
+        zoom="8"
+        width="450px"
+        height="400px" >
+</div>
+```
 
 Attributes:
 
- - geocoding-api-key - A Google Geocoding API key.  To generate a key follow instructions [here](https://developers.google.com/maps/documentation/javascript/tutorial).
- - center - An address to act as the center of the map. This is a single ADOR or a concatenation of multiple ADORs.
- - pin - An address to place a pin on the map. This is a single ADOR or a concatenation of multiple ADORs.
- - route-origin - An address for the start of the route. This is a single ADOR or a concatenation of multiple ADORs.
- - route-destination - An address for the end of the route. This is a single ADOR or a concatenation of multiple ADORs.
- - zoom - The zoom factor the map should be initialised with. The default value is 8.
- - width - Width of the map. This field accepts CSS values such is '600px', '50%'. If not specified the default value is 100%.
- - height - Height of the map. This field accepts CSS values as the width. If not specified the default value is 300px.
- - map-styles - Styles to customize the map's theme. You can find detailed information from Google Maps [here](https://developers.google.com/maps/documentation/javascript/styling?hl=en).
- - options - this is an options values which allows you to override all option and control map styling:
+| **Attribute** | **Description** |
+| ------------- | ------------- |
+| **geocoding-api-key** | A Google Geocoding API key.  To generate a key follow instructions [here](https://developers.google.com/maps/documentation/javascript/tutorial). |
+| **center** | An address to act as the center of the map. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
+| **pin** | An address to place a pin on the map. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
+| **route-origin** | An address for the start of the route. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
+| **route-destination** | An address for the end of the route. This is a single ADOR or a concatenation of multiple ADORs. For best results, create a new ADOR in your plan that combines all of the typical address information that you would normally use when finding your address in Google Maps. |
+| **zoom** | The zoom factor the map should be initialised with. The default value is 8. Lower values mean you are zoomed out more. Higher values mean you are zoomed in close to the address. Zoom level 1 would show the world view, Zoom level 5 shows continents, Zoom level 10 shows a city view. If you zoom all the way down to level 20, it shows individual buildings. |
+| **width** | Width of the map. This field accepts CSS values such is '600px', '50%'. If not specified the default value is 100%. |
+| **height** | Height of the map. This field accepts CSS values as the width. If not specified the default value is 300px. |
+| **map-styles** | Styles to customize the map's theme. You can find detailed information from Google Maps [here](https://developers.google.com/maps/documentation/javascript/styling?hl=en). |
+| **options** | These are the options values which allow you to override all option and control map styling. Code example is below. |
 
-`
+```javascript
 {
 	center: {
 		address:'set address here'
@@ -77,8 +95,9 @@ Attributes:
     ]
 	geocoding_api_key: 'google-api-key here.'
 }
-`
+```
 
+ 
 Obtaining an API Key
 --------------------
 
@@ -100,6 +119,6 @@ Map features are the geographic elements that can be targeted on the map. These 
 Stylers are color and visibility properties that can be applied to map features. They define the display color through a combination of hue, color, and lightness/gamma values.
 Map features and stylers are combined into a style array, which is passed to the default map's MapOptions object
 There are a few tools for setting the maps styles on the internet, two examples
-- [Mapstylr](Stule http://www.mapstylr.com/)
+- [Mapstylr]
 - [Snazzy Maps](https://snazzymaps.com/)
 
